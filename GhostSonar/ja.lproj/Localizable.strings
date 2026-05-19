@@ -1,0 +1,65 @@
+/* Top HUD */
+"app_title" = "GHOST SONAR";
+"app_subtitle" = "超常現象探知システム v2.1";
+
+/* Status */
+"status_offline" = "システム停止中";
+"status_initializing" = "初期化中...";
+"status_scanning" = "スキャン中...";
+"status_contact" = "!! 反応検出 !!";
+"status_calibrating" = "キャリブレーション %d%%";
+"status_contacts" = "検出数: %d";
+
+/* Sensors */
+"sensor_emf" = "EMF";
+"sensor_evp" = "EVP";
+"sensor_pressure" = "気圧";
+"sensor_vibration" = "振動";
+
+/* Threat */
+"threat_low" = "低";
+"threat_medium" = "中";
+"threat_high" = "高";
+"threat_critical" = "危険";
+
+/* Controls */
+"btn_start" = "スキャン開始";
+"btn_stop" = "スキャン停止";
+
+/* Detection log */
+"log_title" = "探知ログ";
+"log_contacts" = "%d件の反応";
+
+/* Horror messages */
+"horror_1" = "見ている";
+"horror_2" = "振り返るな";
+"horror_3" = "逃げろ";
+"horror_4" = "ここにいる";
+"horror_5" = "助けて";
+"horror_6" = "出ていけ";
+"horror_7" = "聞こえますか";
+"horror_8" = "すぐ後ろにいる";
+"horror_9" = "振り向くな";
+"horror_10" = "ひとりじゃない";
+
+/* Detection descriptions */
+"detect_emf_1" = "電磁場の歪みを検出";
+"detect_emf_2" = "異常な磁気変動";
+"detect_emf_3" = "EMFスパイク - 存在の可能性";
+"detect_evp_1" = "音声異常をキャプチャ";
+"detect_evp_2" = "説明不能な音声パターン";
+"detect_evp_3" = "EVP周波数を検出";
+"detect_pressure_1" = "気圧の急降下";
+"detect_pressure_2" = "大気の乱れ";
+"detect_vibration_1" = "原因不明の振動を検出";
+"detect_vibration_2" = "物理的な異常を感知";
+"detect_multi_1" = "警告: 複数センサー異常";
+"detect_multi_2" = "注意: マルチスペクトル検出";
+"detect_multi_3" = "危険: フルスペクトル接触";
+
+/* Permissions */
+"mic_permission" = "Ghost Sonarはマイクを使用してEVP（電子音声現象）や音声異常を検出します。";
+"motion_permission" = "Ghost Sonarはモーションセンサーを使用して原因不明の振動や動きの異常を検出します。";
+
+/* App Store */
+"app_description" = "iPhoneを超常現象探知デバイスに。Ghost Sonarは磁気センサー、気圧計、マイク、加速度計のリアルセンサーデータを使って周囲の異常をスキャンします。\n\n潜水艦ソナー風レーダー画面でリアルタイムにセンサーを可視化。異常検出時にはホラー演出が発動します。\n\nエンターテインメント目的のアプリです。";

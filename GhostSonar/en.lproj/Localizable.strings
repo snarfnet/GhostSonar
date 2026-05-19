@@ -1,0 +1,65 @@
+/* Top HUD */
+"app_title" = "GHOST SONAR";
+"app_subtitle" = "PARANORMAL DETECTION SYSTEM v2.1";
+
+/* Status */
+"status_offline" = "SYSTEMS OFFLINE";
+"status_initializing" = "INITIALIZING...";
+"status_scanning" = "SCANNING...";
+"status_contact" = "!! CONTACT DETECTED !!";
+"status_calibrating" = "CALIBRATING %d%%";
+"status_contacts" = "CONTACTS: %d";
+
+/* Sensors */
+"sensor_emf" = "EMF";
+"sensor_evp" = "EVP";
+"sensor_pressure" = "PRES";
+"sensor_vibration" = "VIB";
+
+/* Threat */
+"threat_low" = "LOW";
+"threat_medium" = "MED";
+"threat_high" = "HIGH";
+"threat_critical" = "CRIT";
+
+/* Controls */
+"btn_start" = "BEGIN SCAN";
+"btn_stop" = "STOP SCAN";
+
+/* Detection log */
+"log_title" = "DETECTION LOG";
+"log_contacts" = "%d CONTACTS";
+
+/* Horror messages */
+"horror_1" = "IT SEES YOU";
+"horror_2" = "DON'T LOOK BEHIND";
+"horror_3" = "RUN";
+"horror_4" = "IT'S HERE";
+"horror_5" = "HELP ME";
+"horror_6" = "GET OUT";
+"horror_7" = "CAN YOU HEAR ME";
+"horror_8" = "I'M RIGHT BEHIND YOU";
+"horror_9" = "DON'T TURN AROUND";
+"horror_10" = "WE ARE NOT ALONE";
+
+/* Detection descriptions */
+"detect_emf_1" = "Electromagnetic field distortion detected";
+"detect_emf_2" = "Abnormal magnetic fluctuation";
+"detect_emf_3" = "EMF spike - possible entity presence";
+"detect_evp_1" = "Audio anomaly captured";
+"detect_evp_2" = "Unexplained sound pattern";
+"detect_evp_3" = "EVP frequency detected";
+"detect_pressure_1" = "Barometric pressure drop";
+"detect_pressure_2" = "Atmospheric disturbance";
+"detect_vibration_1" = "Unexplained vibration detected";
+"detect_vibration_2" = "Physical disturbance sensed";
+"detect_multi_1" = "WARNING: Multiple sensor anomaly";
+"detect_multi_2" = "ALERT: Multi-spectrum detection";
+"detect_multi_3" = "DANGER: Full spectrum contact";
+
+/* Permissions */
+"mic_permission" = "Ghost Sonar uses the microphone to detect EVP (Electronic Voice Phenomena) and audio anomalies for paranormal investigation.";
+"motion_permission" = "Ghost Sonar uses motion sensors to detect unexplained vibrations and movement anomalies.";
+
+/* App Store */
+"app_description" = "Turn your iPhone into a paranormal detection device. Ghost Sonar uses real sensor data — magnetometer, barometer, microphone, and accelerometer — to scan for anomalies in your environment.\n\nFeatures a submarine sonar-style radar display with real-time sensor visualization and horror effects when anomalies are detected.\n\nFor entertainment purposes only.";
