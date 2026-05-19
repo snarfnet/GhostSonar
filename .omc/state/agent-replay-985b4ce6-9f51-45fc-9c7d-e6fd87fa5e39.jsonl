@@ -1,4 +1,0 @@
-{"t":0,"agent":"a4fe6e9","agent_type":"unknown","event":"agent_stop","success":true}
-{"t":0,"agent":"a5dcfd5","agent_type":"unknown","event":"agent_stop","success":true}
-{"t":0,"agent":"system","event":"skill_invoked","skill_name":"codex:rescue"}
-{"t":0,"agent":"a464b62","agent_type":"codex:codex-rescue","event":"agent_start","parent_mode":"none"}
