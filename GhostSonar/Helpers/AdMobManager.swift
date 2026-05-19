@@ -9,7 +9,7 @@ class AdMobManager: ObservableObject {
     let appID = "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX" // Replace
 
     func configure() {
-        MobileAds.shared.start()
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
 }
 
