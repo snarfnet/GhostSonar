@@ -99,11 +99,11 @@ struct ContentView: View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
                 Text("GHOST SONAR")
-                    .font(.system(size: 14, weight: .black, design: .monospaced))
+                    .font(.system(size: 18, weight: .black, design: .monospaced))
                     .foregroundColor(Color("sonarGreen"))
 
                 Text("PARANORMAL DETECTION SYSTEM v2.1")
-                    .font(.system(size: 7, design: .monospaced))
+                    .font(.system(size: 11, design: .monospaced))
                     .foregroundColor(Color("sonarGreen").opacity(0.5))
             }
 
@@ -111,11 +111,11 @@ struct ContentView: View {
 
             VStack(alignment: .trailing, spacing: 2) {
                 Text(Date(), style: .time)
-                    .font(.system(size: 11, weight: .medium, design: .monospaced))
+                    .font(.system(size: 14, weight: .medium, design: .monospaced))
                     .foregroundColor(Color("sonarGreen").opacity(0.8))
 
                 Text(submarineDepth)
-                    .font(.system(size: 8, design: .monospaced))
+                    .font(.system(size: 12, design: .monospaced))
                     .foregroundColor(Color("sonarGreen").opacity(0.4))
             }
         }
@@ -133,7 +133,7 @@ struct ContentView: View {
                 .animation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true), value: isActive)
 
             Text(statusText)
-                .font(.system(size: 10, weight: .bold, design: .monospaced))
+                .font(.system(size: 13, weight: .bold, design: .monospaced))
                 .foregroundColor(ghostEngine.isEntityDetected ? Color("sonarRed") : Color("sonarGreen"))
                 .animation(.easeInOut(duration: 0.3), value: statusText)
 
@@ -141,12 +141,12 @@ struct ContentView: View {
 
             if isActive && ghostEngine.scanProgress < 1.0 {
                 Text("CALIBRATING \(Int(ghostEngine.scanProgress * 100))%")
-                    .font(.system(size: 9, design: .monospaced))
+                    .font(.system(size: 12, design: .monospaced))
                     .foregroundColor(Color("sonarYellow"))
             }
 
             Text("CONTACTS: \(ghostEngine.detectionCount)")
-                .font(.system(size: 9, design: .monospaced))
+                .font(.system(size: 12, design: .monospaced))
                 .foregroundColor(Color("sonarGreen").opacity(0.6))
         }
         .padding(.vertical, 4)
@@ -171,7 +171,7 @@ struct ContentView: View {
                         .shadow(color: isActive ? threatColor(level) : .clear, radius: 4)
 
                     Text(level)
-                        .font(.system(size: 7, weight: .bold, design: .monospaced))
+                        .font(.system(size: 11, weight: .bold, design: .monospaced))
                         .foregroundColor(threatColor(level).opacity(isActive ? 0.9 : 0.3))
                 }
             }
@@ -207,9 +207,9 @@ struct ContentView: View {
             } label: {
                 HStack(spacing: 6) {
                     Image(systemName: isActive ? "stop.fill" : "antenna.radiowaves.left.and.right")
-                        .font(.system(size: 14))
+                        .font(.system(size: 16))
                     Text(isActive ? "STOP SCAN" : "BEGIN SCAN")
-                        .font(.system(size: 12, weight: .bold, design: .monospaced))
+                        .font(.system(size: 14, weight: .bold, design: .monospaced))
                 }
                 .foregroundColor(isActive ? Color("sonarRed") : Color("sonarGreen"))
                 .padding(.horizontal, 20)

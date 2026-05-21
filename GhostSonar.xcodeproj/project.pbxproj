@@ -19,7 +19,6 @@
 		AA000010 /* SoundGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000010; };
 		AA000011 /* AdMobManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000011; };
 		AA000012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB000012; };
-		AA000013 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = AD000001; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +43,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA000013 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,9 +133,6 @@
 			dependencies = (
 			);
 			name = GhostSonar;
-			packageProductDependencies = (
-				AD000001 /* GoogleMobileAds */,
-			);
 			productName = GhostSonar;
 			productReference = AB000020 /* GhostSonar.app */;
 			productType = "com.apple.product-type.application";
@@ -168,7 +163,6 @@
 			);
 			mainGroup = AE000001;
 			packageReferences = (
-				AD000010 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = AE000010 /* Products */;
 			projectDirPath = "";
@@ -346,24 +340,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		AD000010 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 11.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		AD000001 /* GoogleMobileAds */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AD000010 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
-			productName = GoogleMobileAds;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 	};
 	rootObject = AF000002 /* Project object */;

@@ -96,7 +96,7 @@ struct SonarRadarView: View {
             // Distance markers
             ForEach([0.25, 0.5, 0.75], id: \.self) { scale in
                 Text("\(Int(scale * 100))m")
-                    .font(.system(size: 8, design: .monospaced))
+                    .font(.system(size: 11, design: .monospaced))
                     .foregroundColor(Color("sonarGreen").opacity(0.3))
                     .position(x: center.x + radius * scale + 14, y: center.y - 4)
             }
@@ -181,7 +181,7 @@ struct SonarRadarView: View {
         ]
         return ForEach(markers, id: \.0) { label, angle in
             Text(label)
-                .font(.system(size: 11, weight: .bold, design: .monospaced))
+                .font(.system(size: 13, weight: .bold, design: .monospaced))
                 .foregroundColor(Color("sonarGreen").opacity(0.6))
                 .position(
                     x: center.x + cos(angle) * (radius + 16),

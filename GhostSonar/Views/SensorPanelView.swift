@@ -62,7 +62,7 @@ struct SensorGauge: View {
 
             // Label
             Text(label)
-                .font(.system(size: 9, weight: .bold, design: .monospaced))
+                .font(.system(size: 12, weight: .bold, design: .monospaced))
                 .foregroundColor(Color("sonarGreen").opacity(0.7))
 
             // Bar gauge
@@ -91,7 +91,7 @@ struct SensorGauge: View {
 
             // Value
             Text("\(Int(value * 100))")
-                .font(.system(size: 10, weight: .medium, design: .monospaced))
+                .font(.system(size: 13, weight: .medium, design: .monospaced))
                 .foregroundColor(gaugeColor)
         }
         .frame(maxWidth: .infinity)
@@ -106,12 +106,12 @@ struct DetectionLogView: View {
         VStack(alignment: .leading, spacing: 2) {
             HStack {
                 Image(systemName: "list.bullet")
-                    .font(.system(size: 10))
+                    .font(.system(size: 13))
                 Text("DETECTION LOG")
-                    .font(.system(size: 10, weight: .bold, design: .monospaced))
+                    .font(.system(size: 13, weight: .bold, design: .monospaced))
                 Spacer()
                 Text("\(ghostEngine.detectionCount) CONTACTS")
-                    .font(.system(size: 9, design: .monospaced))
+                    .font(.system(size: 12, design: .monospaced))
             }
             .foregroundColor(Color("sonarGreen").opacity(0.7))
             .padding(.horizontal)
@@ -148,27 +148,27 @@ struct DetectionLogRow: View {
     var body: some View {
         HStack(spacing: 6) {
             Text(dateFormatter.string(from: detection.timestamp))
-                .font(.system(size: 8, design: .monospaced))
+                .font(.system(size: 11, design: .monospaced))
                 .foregroundColor(Color("sonarGreen").opacity(0.5))
 
             Image(systemName: detection.type.icon)
-                .font(.system(size: 8))
+                .font(.system(size: 11))
                 .foregroundColor(rowColor)
 
             Text(detection.type.rawValue)
-                .font(.system(size: 8, weight: .bold, design: .monospaced))
+                .font(.system(size: 11, weight: .bold, design: .monospaced))
                 .foregroundColor(rowColor)
-                .frame(width: 35, alignment: .leading)
+                .frame(width: 45, alignment: .leading)
 
             Text(detection.description)
-                .font(.system(size: 7, design: .monospaced))
+                .font(.system(size: 11, design: .monospaced))
                 .foregroundColor(rowColor.opacity(0.7))
                 .lineLimit(1)
 
             Spacer()
 
             Text("\(Int(detection.intensity * 100))%")
-                .font(.system(size: 8, weight: .bold, design: .monospaced))
+                .font(.system(size: 11, weight: .bold, design: .monospaced))
                 .foregroundColor(rowColor)
         }
         .padding(.horizontal, 12)
