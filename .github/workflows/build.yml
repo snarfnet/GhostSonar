@@ -19,13 +19,8 @@ jobs:
 
     - name: Select Xcode
       run: |
-        XCODE_APP=$(ls /Applications/ | grep -E "^Xcode_2[6-9]|^Xcode_[3-9][0-9]" | sort -V | tail -1)
-        if [ -n "$XCODE_APP" ]; then
-          sudo xcode-select -s "/Applications/$XCODE_APP"
-        else
-          XCODE_APP=$(ls /Applications/ | grep "^Xcode_" | sort -V | tail -1)
-          sudo xcode-select -s "/Applications/$XCODE_APP"
-        fi
+        XCODE_APP=$(ls /Applications/ | grep "^Xcode_" | sort -V | tail -1)
+        sudo xcode-select -s "/Applications/$XCODE_APP"
         xcodebuild -version
 
     - name: Set build number
@@ -34,9 +29,6 @@ jobs:
         echo "BUILD_NUM=$BUILD_NUM" >> $GITHUB_ENV
         /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BUILD_NUM" GhostSonar/Info.plist
         echo "Build number: $BUILD_NUM"
-
-    - name: Resolve packages
-      run: xcodebuild -resolvePackageDependencies -project GhostSonar.xcodeproj -scheme GhostSonar
 
     - name: Import Distribution Certificate
       env:
@@ -59,7 +51,6 @@ jobs:
       run: |
         mkdir -p ~/.appstoreconnect/private_keys
         echo "$ASC_API_KEY_CONTENT" | base64 -D > ~/.appstoreconnect/private_keys/AuthKey_WDXGY9WX55.p8
-        cp ~/.appstoreconnect/private_keys/AuthKey_WDXGY9WX55.p8 /tmp/asc_key.p8
 
     - name: Build Archive
       run: |
@@ -71,6 +62,7 @@ jobs:
           -archivePath build/GhostSonar.xcarchive \
           CODE_SIGN_STYLE=Automatic \
           DEVELOPMENT_TEAM=83VGKGSQUH \
+          CURRENT_PROJECT_VERSION=$BUILD_NUM \
           -allowProvisioningUpdates \
           -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_WDXGY9WX55.p8 \
           -authenticationKeyID WDXGY9WX55 \
@@ -78,26 +70,39 @@ jobs:
 
     - name: Export IPA
       run: |
-        cat > export_options.plist << 'PLIST'
+        cat > ExportOptions.plist << 'EOF'
         <?xml version="1.0" encoding="UTF-8"?>
         <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
         <plist version="1.0">
         <dict>
           <key>method</key>
           <string>app-store-connect</string>
-          <key>destination</key>
-          <string>upload</string>
           <key>teamID</key>
           <string>83VGKGSQUH</string>
+          <key>uploadSymbols</key>
+          <true/>
+          <key>destination</key>
+          <string>export</string>
         </dict>
         </plist>
-        PLIST
-
+        EOF
         xcodebuild -exportArchive \
           -archivePath build/GhostSonar.xcarchive \
           -exportPath build/export \
-          -exportOptionsPlist export_options.plist \
+          -exportOptionsPlist ExportOptions.plist \
           -allowProvisioningUpdates \
           -authenticationKeyPath ~/.appstoreconnect/private_keys/AuthKey_WDXGY9WX55.p8 \
           -authenticationKeyID WDXGY9WX55 \
           -authenticationKeyIssuerID 2be0734f-943a-4d61-9dc9-5d9045c46fec
+
+    - name: Upload IPA
+      run: |
+        set -o pipefail
+        xcrun altool --upload-app \
+          -f build/export/GhostSonar.ipa \
+          -t ios \
+          --apiKey WDXGY9WX55 \
+          --apiIssuer 2be0734f-943a-4d61-9dc9-5d9045c46fec 2>&1 | tee upload.log
+        if grep -q "UPLOAD FAILED\|Validation failed" upload.log; then
+          exit 1
+        fi
