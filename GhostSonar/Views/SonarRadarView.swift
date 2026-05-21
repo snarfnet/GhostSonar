@@ -5,6 +5,8 @@ struct SonarRadarView: View {
     @EnvironmentObject var ghostEngine: GhostDetectionEngine
     @EnvironmentObject var horrorManager: HorrorEffectManager
 
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    private var iPad: Bool { sizeClass == .regular }
     @State private var sweepAngle: Double = 0
     @State private var pingScale: CGFloat = 0
     @State private var pingOpacity: Double = 0
@@ -96,7 +98,7 @@ struct SonarRadarView: View {
             // Distance markers
             ForEach([0.25, 0.5, 0.75], id: \.self) { scale in
                 Text("\(Int(scale * 100))m")
-                    .font(.system(size: 11, design: .monospaced))
+                    .font(.system(size: iPad ? 15 : 11, design: .monospaced))
                     .foregroundColor(Color("sonarGreen").opacity(0.3))
                     .position(x: center.x + radius * scale + 14, y: center.y - 4)
             }
@@ -181,7 +183,7 @@ struct SonarRadarView: View {
         ]
         return ForEach(markers, id: \.0) { label, angle in
             Text(label)
-                .font(.system(size: 13, weight: .bold, design: .monospaced))
+                .font(.system(size: iPad ? 18 : 13, weight: .bold, design: .monospaced))
                 .foregroundColor(Color("sonarGreen").opacity(0.6))
                 .position(
                     x: center.x + cos(angle) * (radius + 16),

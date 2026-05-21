@@ -3,6 +3,8 @@ import SwiftUI
 struct SensorPanelView: View {
     @EnvironmentObject var sensorManager: SensorManager
     @EnvironmentObject var ghostEngine: GhostDetectionEngine
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    private var iPad: Bool { sizeClass == .regular }
 
     var body: some View {
         VStack(spacing: 8) {
@@ -43,6 +45,8 @@ struct SensorGauge: View {
     let value: Double
     let icon: String
     let unit: String
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    private var iPad: Bool { sizeClass == .regular }
 
     private var gaugeColor: Color {
         switch value {
@@ -57,12 +61,12 @@ struct SensorGauge: View {
         VStack(spacing: 4) {
             // Icon
             Image(systemName: icon)
-                .font(.system(size: 12))
+                .font(.system(size: iPad ? 18 : 12))
                 .foregroundColor(gaugeColor)
 
             // Label
             Text(label)
-                .font(.system(size: 12, weight: .bold, design: .monospaced))
+                .font(.system(size: iPad ? 16 : 12, weight: .bold, design: .monospaced))
                 .foregroundColor(Color("sonarGreen").opacity(0.7))
 
             // Bar gauge
@@ -87,11 +91,11 @@ struct SensorGauge: View {
                     }
                 }
             }
-            .frame(width: 20, height: 50)
+            .frame(width: iPad ? 32 : 20, height: iPad ? 70 : 50)
 
             // Value
             Text("\(Int(value * 100))")
-                .font(.system(size: 13, weight: .medium, design: .monospaced))
+                .font(.system(size: iPad ? 18 : 13, weight: .medium, design: .monospaced))
                 .foregroundColor(gaugeColor)
         }
         .frame(maxWidth: .infinity)
@@ -101,17 +105,19 @@ struct SensorGauge: View {
 // MARK: - Detection Log
 struct DetectionLogView: View {
     @EnvironmentObject var ghostEngine: GhostDetectionEngine
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    private var iPad: Bool { sizeClass == .regular }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             HStack {
                 Image(systemName: "list.bullet")
-                    .font(.system(size: 13))
+                    .font(.system(size: iPad ? 18 : 13))
                 Text("DETECTION LOG")
-                    .font(.system(size: 13, weight: .bold, design: .monospaced))
+                    .font(.system(size: iPad ? 18 : 13, weight: .bold, design: .monospaced))
                 Spacer()
                 Text("\(ghostEngine.detectionCount) CONTACTS")
-                    .font(.system(size: 12, design: .monospaced))
+                    .font(.system(size: iPad ? 16 : 12, design: .monospaced))
             }
             .foregroundColor(Color("sonarGreen").opacity(0.7))
             .padding(.horizontal)
@@ -130,6 +136,8 @@ struct DetectionLogView: View {
 
 struct DetectionLogRow: View {
     let detection: GhostReading
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    private var iPad: Bool { sizeClass == .regular }
     private let dateFormatter: DateFormatter = {
         let f = DateFormatter()
         f.dateFormat = "HH:mm:ss"
@@ -148,27 +156,27 @@ struct DetectionLogRow: View {
     var body: some View {
         HStack(spacing: 6) {
             Text(dateFormatter.string(from: detection.timestamp))
-                .font(.system(size: 11, design: .monospaced))
+                .font(.system(size: iPad ? 15 : 11, design: .monospaced))
                 .foregroundColor(Color("sonarGreen").opacity(0.5))
 
             Image(systemName: detection.type.icon)
-                .font(.system(size: 11))
+                .font(.system(size: iPad ? 15 : 11))
                 .foregroundColor(rowColor)
 
             Text(detection.type.rawValue)
-                .font(.system(size: 11, weight: .bold, design: .monospaced))
+                .font(.system(size: iPad ? 15 : 11, weight: .bold, design: .monospaced))
                 .foregroundColor(rowColor)
-                .frame(width: 45, alignment: .leading)
+                .frame(width: iPad ? 65 : 45, alignment: .leading)
 
             Text(detection.description)
-                .font(.system(size: 11, design: .monospaced))
+                .font(.system(size: iPad ? 15 : 11, design: .monospaced))
                 .foregroundColor(rowColor.opacity(0.7))
                 .lineLimit(1)
 
             Spacer()
 
             Text("\(Int(detection.intensity * 100))%")
-                .font(.system(size: 11, weight: .bold, design: .monospaced))
+                .font(.system(size: iPad ? 15 : 11, weight: .bold, design: .monospaced))
                 .foregroundColor(rowColor)
         }
         .padding(.horizontal, 12)
