@@ -30,41 +30,48 @@ struct ContentView: View {
             .ignoresSafeArea()
 
             VStack(spacing: 0) {
-                // Top HUD bar
-                topHUD
-                    .padding(.horizontal)
-                    .padding(.top, 4)
+                ScrollView {
+                    VStack(spacing: 0) {
+                        // Top HUD bar
+                        topHUD
+                            .padding(.horizontal)
+                            .padding(.top, 4)
 
-                // Status bar
-                statusBar
-                    .padding(.horizontal)
-                    .padding(.top, 4)
+                        // Status bar
+                        statusBar
+                            .padding(.horizontal)
+                            .padding(.top, 4)
 
-                // Main sonar radar
-                SonarRadarView()
-                    .padding(16)
-                    .scaleEffect(horrorManager.heartbeatScale)
-                    .offset(x: horrorManager.screenShake * (Bool.random() ? 1 : -1),
-                            y: horrorManager.screenShake * (Bool.random() ? 1 : -1))
+                        // Main sonar radar
+                        SonarRadarView()
+                            .padding(16)
+                            .frame(maxWidth: 500)
+                            .frame(maxWidth: .infinity)
+                            .scaleEffect(horrorManager.heartbeatScale)
+                            .offset(x: horrorManager.screenShake * (Bool.random() ? 1 : -1),
+                                    y: horrorManager.screenShake * (Bool.random() ? 1 : -1))
 
-                // Threat indicator
-                threatIndicator
-                    .padding(.horizontal)
+                        // Threat indicator
+                        threatIndicator
+                            .padding(.horizontal)
 
-                // Sensor panels
-                SensorPanelView()
-                    .padding(.vertical, 8)
+                        // Sensor panels
+                        SensorPanelView()
+                            .padding(.vertical, 8)
 
-                // Detection log (collapsible)
-                if showLog {
-                    DetectionLogView()
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        // Detection log (collapsible)
+                        if showLog {
+                            DetectionLogView()
+                                .transition(.move(edge: .bottom).combined(with: .opacity))
+                        }
+
+                        // Control buttons
+                        controlBar
+                            .padding(.horizontal)
+                            .padding(.bottom, 8)
+                    }
                 }
-
-                // Control buttons
-                controlBar
-                    .padding(.horizontal)
-                    .padding(.bottom, 4)
+                .scrollBounceBehavior(.basedOnSize)
 
                 // AdMob Banner
                 BannerAdView(adUnitID: AdMobManager.shared.bannerAdUnitID)

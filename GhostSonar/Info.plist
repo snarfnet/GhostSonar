@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Ghost Sonar</string>
+	<string>GPS 心霊スポットレーダー</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,11 +23,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Ghost Sonar uses the microphone to detect EVP (Electronic Voice Phenomena) and audio anomalies for paranormal investigation.</string>
+	<string>EVP（電子音声現象）や音響異常を検出するためにマイクを使用します。</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Ghost Sonar uses motion sensors to detect unexplained vibrations and movement anomalies.</string>
+	<string>不可解な振動や動作異常を検出するためにモーションセンサーを使用します。</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Ghost Sonar uses your location to log detection coordinates on the map.</string>
+	<string>検出座標をマップに記録するために位置情報を使用します。</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>あなたに合った広告を表示するために使用します。</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
