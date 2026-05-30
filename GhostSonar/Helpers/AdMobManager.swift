@@ -7,7 +7,7 @@ class AdMobManager: NSObject, ObservableObject {
     let bannerAdUnitID = "ca-app-pub-9404799280370656/4004772300"
 
     func configure() {
-        MobileAds.shared.start(completionHandler: nil)
+        Task { await MobileAds.shared.start() }
     }
 }
 
@@ -15,14 +15,16 @@ struct BannerAdView: UIViewRepresentable {
     let adUnitID: String
 
     func makeUIView(context: Context) -> BannerView {
-        let banner = BannerView(adSize: GADAdSizeBanner)
+        let banner = BannerView()
         banner.adUnitID = adUnitID
-        banner.rootViewController = UIApplication.shared.connectedScenes
-            .compactMap { $0 as? UIWindowScene }
-            .flatMap { $0.windows }
-            .first { $0.isKeyWindow }?
-            .rootViewController
-        banner.load(Request())
+        banner.translatesAutoresizingMaskIntoConstraints = false
+        DispatchQueue.main.async {
+            guard let windowScene = UIApplication.shared.connectedScenes
+                .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
+                ?? UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+            banner.rootViewController = windowScene.keyWindow?.rootViewController
+            banner.load(Request())
+        }
         return banner
     }
 

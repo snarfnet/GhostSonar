@@ -1,6 +1,5 @@
 import SwiftUI
 import AppTrackingTransparency
-import GoogleMobileAds
 
 @main
 struct GhostSonarApp: App {
@@ -19,7 +18,6 @@ struct GhostSonarApp: App {
                 .environmentObject(horrorManager)
                 .preferredColorScheme(.dark)
                 .onAppear {
-                    Task { await MobileAds.shared.start() }
                     adMobManager.configure()
                 }
                 .onChange(of: scenePhase) { _, newPhase in
