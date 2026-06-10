@@ -4,7 +4,7 @@ import GoogleMobileAds
 class AdMobManager: NSObject, ObservableObject {
     static let shared = AdMobManager()
 
-    let bannerAdUnitID = "ca-app-pub-9404799280370656/4004772300"
+    let bannerAdUnitID = "ca-app-pub-9404799280370656/5595301558"
 
     func configure() {
         Task { await MobileAds.shared.start() }
