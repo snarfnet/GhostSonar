@@ -28,9 +28,7 @@
 	<string>不可解な振動や動作異常を検出するためにモーションセンサーを使用します。</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>検出座標をマップに記録するために位置情報を使用します。</string>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>あなたに合った広告を表示するために使用します。</string>
-	<key>UILaunchScreen</key>
+<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
 		<string>LaunchBackground</string>
